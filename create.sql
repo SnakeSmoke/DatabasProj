@@ -90,6 +90,15 @@ total price)
 
 /*3*/select Title, stock_quantity, Discount, price_with_tax from product where featured = 1;
 
+/*4*/select product.Title, product.Product_id, a.keyword_id
+from product
+join related a on product.Product_id = a.product_id
+where a.keyword_id in 
+(select keyword_id from related b
+where b.product_id = 2)
+AND NOT a.product_id = 2
+group by product.Title;
+
 /*5*/SELECT distinct product.Title, product.short_description, product.price_with_tax, avg(review.score)
 from product
 left join review on product.Product_id= review.product_ID
