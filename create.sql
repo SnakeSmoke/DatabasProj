@@ -83,17 +83,29 @@ total price)
 • 10 best-selling products (in last 30 days)
 */
 
-/*1.select Welcome_text from Homepage*/
 
-/*2.select title, short_description from department where id = 1 OR id = 2*/
+/*1*/select Welcome_text from Homepage;
 
-/*3.select Title, stock_quantity, Discount, price_with_tax from product where featured = 1*/
+/*2*/select title, short_description from department where id = 1 OR id = 2;
 
-/*5.select product.Title, product.department_id
+/*3*/select Title, stock_quantity, Discount, price_with_tax from product where featured = 1;
+
+/*5*/SELECT distinct product.Title, product.short_description, product.price_with_tax, avg(review.score)
 from product
-join department on product.department_id = department.id
-where department_id = 4*/
-select Welcome_text from Homepage
+left join review on product.Product_id= review.product_ID
+where department_id = 8
+group by product.Title;
+
+/*6*/
+SELECT *
+FROM product
+WHERE Featured = 1
+ORDER BY Discount ASC;
+
+/*7*/SELECT order.id, order.order_date, user.name, user.address, orderdetails.price
+FROM order, user, orderdetails
+WHERE orderdetails.order_id = order.id AND order.user_id = user.ID
+ORDER BY order_date DESC;
 
 
 /*alter table product modify Featured BOOLEAN not null;*/
