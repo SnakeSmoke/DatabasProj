@@ -13,13 +13,13 @@ references product(Product_id)
 
 );
 
-create table keyword(
+create table keyword (
 keyword_ID int not null,
 keyword varchar(255) not null,
 
 primary key(keyword_ID, keyword)
 
-);
+    );
 
 create table user (
     ID int not null primary key,
@@ -30,6 +30,16 @@ create table user (
     address varchar(255) not null,
     name varchar(255) not null
     
+    );
+
+create table related (
+	
+    keyword_id INT not null,
+    product_id INT not null,
+    primary key(keyword_id, product_id),
+    foreign key(keyword_id) references keyword(keyword_id),
+    foreign key(product_id) references product(Product_id)
+
     );
 
 alter table keyword add column product_id int not null,
