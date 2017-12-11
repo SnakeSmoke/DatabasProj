@@ -1,10 +1,7 @@
-
-DROP TABLE Homepage;
 CREATE TABLE Homepage (
   welcome_text TEXT
 );
 
-DROP TABLE Department;
 CREATE TABLE Department (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
@@ -14,7 +11,6 @@ CREATE TABLE Department (
   FOREIGN KEY (parent_id) REFERENCES Department(id)
 );
 
-DROP TABLE Product;
 CREATE TABLE Product (
   product_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   title varchar(255) NOT NULL,
@@ -30,7 +26,6 @@ CREATE TABLE Product (
   FOREIGN KEY (department_id) REFERENCES Department(id)
 );
 
-DROP TABLE Orders;
 CREATE TABLE Orders (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   tracking_number int NOT NULL,
@@ -42,7 +37,6 @@ CREATE TABLE Orders (
   FOREIGN KEY (user_id) REFERENCES User(id)
 );
 
-DROP TABLE Orderdetails;
 CREATE TABLE Orderdetails(
   price DECIMAL(10,2) NOT NULL,
   quantity int NOT NULL,
@@ -52,7 +46,6 @@ CREATE TABLE Orderdetails(
   FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
 
-DROP TABLE User;
 CREATE TABLE User(
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   firstname varchar(255) NOT NULL,
@@ -68,7 +61,6 @@ CREATE TABLE User(
   newsletter boolean NOT NULL
 );
 
-DROP TABLE Review;
 CREATE TABLE Review(
   score int NOT NULL CHECK(score BETWEEN 1 AND 5),
   user_review varchar(255) NOT NULL,
@@ -79,7 +71,6 @@ CREATE TABLE Review(
   FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
 
-DROP TABLE Related;
 CREATE TABLE Related(
   keyword_id int NOT NULL,
   product_id int NOT NULL,
@@ -88,7 +79,7 @@ CREATE TABLE Related(
   FOREIGN KEY(product_id) REFERENCES Product(product_id)
 );
 
-DROP TABLE Keyword;
+
 CREATE TABLE Keyword(
   keyword_id int NOT NULL PRIMARY KEY,
   keyword varchar(255) NOT NULL
